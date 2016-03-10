@@ -20,7 +20,18 @@ $(function () {
     this.$listRole = $("#list-category");
     this.$modalCreate = $('#modal-create-category');
     this.$inputRoleName = $('#category-name');
-    this.$listRole.bootgrid().on('click.rs.jquery.bootgrid', function (e, columns, row) {
+    var convertData = function (json) {
+      return {
+        rows: json.items,
+        total: json.total,
+        current: json.currentPage
+      }
+    };
+    this.$listRole.bootgrid({
+      ajax: true,
+      url: 'https://dl.dropboxusercontent.com/u/8182319/data.json',
+      responseHandler: convertData
+    }).on('click.rs.jquery.bootgrid', function (e, columns, row) {
       console.log('Edit row: ', row, 'with timeStamp: ', e.timeStamp);
       _this.setCateId(row.id);
       _this.$inputRoleName.val(row.name);
