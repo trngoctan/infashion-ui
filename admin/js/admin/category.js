@@ -44,6 +44,20 @@ $(function () {
     this.$toolbar.CREATE.on('click', function () {
       _this.clear();
     });
+
+
+    var a = 'w3schools.com';
+    try {
+      adddlert("Welcome guest!");
+      console.log("Noi dung trong try");
+    } catch (errors) {
+
+    } finally {
+
+    }
+
+    console.log('Noi dung duoi try catch');
+
   };
   InFashion.CategoryItem.prototype = {
     setCateId: function (cateId) {
